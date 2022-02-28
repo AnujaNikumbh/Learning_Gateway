@@ -7,3 +7,9 @@ class Notes(models.Model):   #class notes containning below 3 columns
     title = models.CharField(max_length=200)
     description = models.TextField()
     
+    def __str__(self):           #to display title name
+        return self.title
+    
+    class Meta:         #for removing that extra s added by django admin
+        verbose_name ="notes"    #new name
+        verbose_name_plural = "notes"   #previous name
