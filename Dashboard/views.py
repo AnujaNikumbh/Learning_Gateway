@@ -1,5 +1,6 @@
 import re
-from django.shortcuts import render
+from tkinter import N
+from django.shortcuts import redirect,render
 from . forms import *       # importing forms model 
 from django.contrib import messages #imported messages
 
@@ -23,3 +24,8 @@ def notes(request):
     notes = Notes.objects.filter(user=request.user)   #created notes object and pass request user that is login user
     context = {'notes':notes,'form':form}         #passing notes object using context
     return render(request,'Dashboard/notes.html',context)      #rendering notes file  #passing context object in file
+
+
+def delete_note(request,pk=None):         #for deleting notes object used primary key
+    Notes.objects.get(id=pk).delete()
+    return redirect("notes")
