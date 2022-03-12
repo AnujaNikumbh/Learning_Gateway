@@ -3,6 +3,7 @@ from tkinter import N
 from django.shortcuts import redirect,render
 from . forms import *       # importing forms model 
 from django.contrib import messages #imported messages
+from django.views import generic
 
 
 
@@ -29,3 +30,7 @@ def notes(request):
 def delete_note(request,pk=None):         #for deleting notes object used primary key
     Notes.objects.get(id=pk).delete()
     return redirect("notes")
+
+
+class NotesDetailView(generic.DetailView):
+    model = Notes
