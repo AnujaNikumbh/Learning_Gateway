@@ -34,3 +34,10 @@ def delete_note(request,pk=None):         #for deleting notes object used primar
 
 class NotesDetailView(generic.DetailView):
     model = Notes
+    
+
+
+
+
+def homework(request):
+    return render(request,'Dashboard/homework.html')    
