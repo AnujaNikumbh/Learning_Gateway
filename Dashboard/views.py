@@ -39,7 +39,15 @@ class NotesDetailView(generic.DetailView):
 
 
 def homework(request):
+    form = HomeworkForm()
     homework = Homework.objects.filter(user=request.user)
-    context={'homeworks':homework}
+    if len(homework) == 0:
+        homework_done = True
+    else:
+        homework_done = False    
+    context={'homeworks':homework,
+             'homeworks_done':homework_done,
+             'form':form,
+            }
     return render(request,'Dashboard/homework.html',context)    
 
