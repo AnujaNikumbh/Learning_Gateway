@@ -22,7 +22,7 @@ def notes(request):
     else: 
         form = NotesForm()
     
-    notes = Notes.objects.filter(user=request.user)   #created notes object and pass request user that is login user
+    notes = Notes.objects.filter(user=request.user)    #created notes object and pass request user that is login user
     context = {'notes':notes,'form':form}         #passing notes object using context
     return render(request,'Dashboard/notes.html',context)      #rendering notes file  #passing context object in file
 
