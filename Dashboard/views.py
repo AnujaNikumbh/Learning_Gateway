@@ -59,8 +59,10 @@ def homework(request):
                 is_finished = finished
             )  
             homeworks.save()            #to save all details of the Homework
-        
-    form = HomeworkForm()
+            messages.success(request,f'Homework Added from {request.user.username}!!') #added success msg
+    else:                               #if request is not post 
+            form = HomeworkForm()
+    
     homework = Homework.objects.filter(user=request.user)
     if len(homework) == 0:
         homework_done = True
