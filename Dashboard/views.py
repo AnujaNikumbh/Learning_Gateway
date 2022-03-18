@@ -51,8 +51,14 @@ def homework(request):
             except:
                 finished = False  
             homeworks = Homework(
-                
-            )              
+                user = request.user,
+                subject = request.POST['subject'],
+                title = request.POST['title'],
+                description = request.POST['description'],
+                due = request.POST['due'],
+                is_finished = finished
+            )  
+            homework.save()            #to save all details of the Homework
         
     form = HomeworkForm()
     homework = Homework.objects.filter(user=request.user)
