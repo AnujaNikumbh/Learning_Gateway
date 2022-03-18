@@ -8,4 +8,5 @@ urlpatterns =[
     path('notes_detail/<int:pk>', views.NotesDetailView.as_view(), name="notes-detail"),#mapping views.notes_detail function
     
     path('homework', views.homework, name="homework"),
+    path('update_homework/<int:pk>',views.update_homework, name="update-homework"),
 ]
