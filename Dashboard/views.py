@@ -58,7 +58,7 @@ def homework(request):
                 due = request.POST['due'],
                 is_finished = finished
             )  
-            homework.save()            #to save all details of the Homework
+            homeworks.save()            #to save all details of the Homework
         
     form = HomeworkForm()
     homework = Homework.objects.filter(user=request.user)
