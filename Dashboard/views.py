@@ -4,7 +4,7 @@ from django.shortcuts import redirect,render
 from . forms import *       # importing forms model 
 from django.contrib import messages #imported messages
 from django.views import generic
-
+from youtubesearchpython import VideosSearch
 
 
 # Create your views here.
@@ -94,8 +94,36 @@ def delete_homework(request,pk=None):
 
 
 def youtube(request):
-    
-    form = DashboardForm()
+    if request.method == "POST":
+        form = DashboardForm(request.POST)
+        text = request.POST['text']
+        video = VideosSearch(text,limit=10)
+        result_list= []
+        for i in video.result()['result']:
+            result_dict = {
+                'input':text,
+                'title':i['title'],
+                'duration':i['duration'],
+                'thumbnail':i['thumbnails'][0]['url'],
+                'channel':i['channel']['name'],
+                'link':i['link'],
+                'views':i['viewCount']['short'],
+                'published':i['publishedTime']
+            }
+            desc = ''
+            if i['descriptionSnippet']:
+                for j in i['descriptionSnippet']:
+                    desc += j['text']
+            result_dict['dictionary'] = desc
+            result_list.append(result_dict)
+            context={
+                'form': form,
+                'result':result_list
+            }
+        
+        return render(request,'Dashboard/youtube.html',context)        
+    else:    
+        form = DashboardForm()
     context = {'form':form}
     return render(request, "Dashboard/youtube.html",context)
   
