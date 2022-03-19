@@ -94,4 +94,8 @@ def delete_homework(request,pk=None):
 
 
 def youtube(request):
-    return render(request, "Dashboard/youtube.html")
+    
+    form = DashboardForm()
+    context = {'form':form}
+    return render(request, "Dashboard/youtube.html",context)
+  
