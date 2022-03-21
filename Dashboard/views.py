@@ -95,6 +95,7 @@ def delete_homework(request,pk=None):
 
 def youtube(request):
     if request.method == "POST":
+    
         form = DashboardForm(request.POST)
         text = request.POST['text']
         video = VideosSearch(text,limit=10)
@@ -118,11 +119,12 @@ def youtube(request):
             result_list.append(result_dict)
             context={
                 'form': form,
-                'result':result_list
+                'results':result_list
             }
         
         return render(request,'Dashboard/youtube.html',context)        
-    else:    
+    else: 
+           
         form = DashboardForm()
     context = {'form':form}
     return render(request, "Dashboard/youtube.html",context)
