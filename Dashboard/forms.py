@@ -20,6 +20,6 @@ class HomeworkForm(forms.ModelForm):
 
 
 class DashboardForm(forms.Form):
-    text = forms.CharField(max_length=100,label="Enter your search: ")
+    text = forms.CharField(max_length=100,label="Enter your search ")
             
         
