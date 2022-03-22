@@ -133,4 +133,8 @@ def youtube(request):
 
 
 def todo(request):
-    return render(request, "Dashboard/todo.html")
+    todo = Todo.objects.filter(user=request.user)
+    context = {
+        'todos' : todo
+    }
+    return render(request, "Dashboard/todo.html",context)
