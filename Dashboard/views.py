@@ -154,8 +154,13 @@ def todo(request):
     else:
         form = TodoForm()
     todo = Todo.objects.filter(user=request.user)
+    if len(todo) == 0:
+        todos_done = True
+    else:
+        todos_done = False    
     context = {
         'form':form,
-        'todos' : todo
+        'todos' : todo,
+        'todos_done':todos_done
     }
     return render(request, "Dashboard/todo.html",context)
