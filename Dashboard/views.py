@@ -133,8 +133,10 @@ def youtube(request):
 
 
 def todo(request):
+    form = TodoForm()
     todo = Todo.objects.filter(user=request.user)
     context = {
+        'form':form,
         'todos' : todo
     }
     return render(request, "Dashboard/todo.html",context)
