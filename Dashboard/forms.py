@@ -26,6 +26,11 @@ class DashboardForm(forms.Form):
 class TodoForm(forms.ModelForm):
     class Meta:
         model = Todo
-        fields = ['title','is_finished']            
+        fields = ['title','is_finished'] 
+        
+        
+class ConversationForm(forms.Form):  
+    CHOICES = [('length','Length'),('mass','Mass')]
+    measurement =  forms.ChoiceField(choices=CHOICES,widgets=forms.RadioSelect)              
             
         
