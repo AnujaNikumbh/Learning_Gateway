@@ -219,6 +219,34 @@ def books(request):
 
 
 def dictionary(request):
-    form = DashboardForm()
-    context = {'form':form}
+    if request.method == "POST":
+        form = DashboardForm(request.POST)
+        text = request.POST['text']
+        url = "https://api.dictionaryapi.dev/api/v2/entries/en_US/"+text         #dictionary api
+        r = requests.get(url)                                                    #installed external request 
+        answer = r.json()                                                        #get result in json object
+        try:
+            phonetics = answer[0]['phonetics'][0]['text']
+            audio = answer[0]['phonetics'][0]['audio']
+            defination = answer[0]['meanings'][0]['definations'][0]['defination']  #getting the first result of definaton
+            example = answer[0]['meanings'][0]['definations'][0]['example']
+            synonyms = answer[0]['meanings'][0]['definations'][0]['synonyms']
+            context = {
+                'form': form,
+                'input': text,
+                'phonetics': phonetics,
+                'audio': audio,                           #passing each data individually
+                'defination': defination,
+                'example': example,
+                'synonyms': synonyms,
+            }
+        except :
+            context = {
+                'form': form,
+                'input': ''                         #if no input is found return blank
+            }    
+        return render(request,"Dashboard/dictionary.html",context)
+    else:    
+        form = DashboardForm()
+        context = {'form':form}
     return render(request, "Dashboard/dictionary.html",context)
