@@ -164,3 +164,14 @@ def todo(request):
         'todos_done':todos_done
     }
     return render(request, "Dashboard/todo.html",context)
+
+
+
+def update_todo(request,pk=None):
+    todo = Todo.objects.get(id=pk)
+    if todo.is_finished == True:
+        todo.is_finished = False
+    else:
+        todo.is_finished = True
+    todo.save()
+    return redirect('todo')        
