@@ -228,25 +228,25 @@ def dictionary(request):
         try:
             phonetics = answer[0]['phonetics'][0]['text']
             audio = answer[0]['phonetics'][0]['audio']
-            defination = answer[0]['meanings'][0]['definations'][0]['defination']  #getting the first result of definaton
-            example = answer[0]['meanings'][0]['definations'][0]['example']
-            synonyms = answer[0]['meanings'][0]['definations'][0]['synonyms']
+            definition = answer[0]['meanings'][0]['definitions'][0]['definition']  #getting the first result of definaton
+            example = answer[0]['meanings'][0]['definitions'][0]['example']
+            synonyms = answer[0]['meanings'][0]['definitions'][0]['synonyms']
             context = {
-                'form': form,
-                'input': text,
-                'phonetics': phonetics,
-                'audio': audio,                           #passing each data individually
-                'defination': defination,
-                'example': example,
-                'synonyms': synonyms,
+                'form':form,
+                'input':text,
+                'phonetics':phonetics,
+                'audio':audio,                           #passing each data individually
+                'defination':definition,
+                'example':example,
+                'synonyms':synonyms
             }
-        except :
+        except:
             context = {
                 'form': form,
-                'input': ''                         #if no input is found return blank
+                'input':''                         #if no input is found return blank
             }    
         return render(request,"Dashboard/dictionary.html",context)
     else:    
         form = DashboardForm()
         context = {'form':form}
-    return render(request, "Dashboard/dictionary.html",context)
+    return render(request,"Dashboard/dictionary.html",context)
