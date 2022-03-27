@@ -180,3 +180,7 @@ def update_todo(request,pk=None):
 def delete_todo(request,pk=None):
     Todo.objects.get(id=pk).delete()
     return redirect("todo")
+
+
+def books(request):
+    return render(request,"Dashboard/books.html")
