@@ -200,8 +200,8 @@ def books(request):
                 'count':answer['items'][i]['volumeInfo'].get('pageCount'),
                 'categories':answer['items'][i]['volumeInfo'].get('categories'),
                 'rating':answer['items'][i]['volumeInfo'].get('pageRating'),
-                'thumbnail':answer['items'][i]['volumeInfo'].get('imageLinks'),
-                'preview':answer['items'][i]['volumeInfo'].get('previewLink'),
+                'thumbnail':answer['items'][i]['volumeInfo'].get('imageLinks').get('thumbnail'),
+                'preview':answer['items'][i]['volumeInfo'].get('previewLink')
                 
             }
             result_list.append(result_dict)
