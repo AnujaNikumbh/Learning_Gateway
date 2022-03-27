@@ -194,14 +194,15 @@ def books(request):
         result_list= []
         for i in range(10):
             result_dict = {
-                'input':text,
-                'title':i['title'],
-                'duration':i['duration'],
-                'thumbnail':i['thumbnails'][0]['url'],
-                'channel':i['channel']['name'],
-                'link':i['link'],
-                'views':i['viewCount']['short'],
-                'published':i['publishedTime']
+                'title':answer['items'][i]['volumeInfo']['title'],    #json object format
+                'subtitle':answer['items'][i]['volumeInfo'].get('subtitle'), 
+                'description':answer['items'][i]['volumeInfo'].get('description'),
+                'count':answer['items'][i]['volumeInfo'].get('pageCount'),
+                'categories':answer['items'][i]['volumeInfo'].get('categories'),
+                'rating':answer['items'][i]['volumeInfo'].get('pageRating'),
+                'thumbnail':answer['items'][i]['volumeInfo'].get('imageLinks'),
+                'preview':answer['items'][i]['volumeInfo'].get('previewLink'),
+                
             }
             desc = ''
             if i['descriptionSnippet']:
