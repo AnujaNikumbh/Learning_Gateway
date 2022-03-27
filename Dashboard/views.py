@@ -183,4 +183,8 @@ def delete_todo(request,pk=None):
 
 
 def books(request):
-    return render(request,"Dashboard/books.html")
+    form = DashboardForm()
+    context = {
+        'form': form
+    }
+    return render(request,"Dashboard/books.html",context)
