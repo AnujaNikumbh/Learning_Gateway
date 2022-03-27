@@ -204,22 +204,16 @@ def books(request):
                 'preview':answer['items'][i]['volumeInfo'].get('previewLink'),
                 
             }
-            desc = ''
-            if i['descriptionSnippet']:
-                for j in i['descriptionSnippet']:
-                    desc += j['text']
-            result_dict['dictionary'] = desc
             result_list.append(result_dict)
             context={
                 'form': form,
                 'results':result_list
             }
-        
-        return render(request,'Dashboard/youtube.html',context)        
+        return render(request,'Dashboard/books.html',context)        
     else: 
            
         form = DashboardForm()
     context = {'form':form}
-    return render(request, "Dashboard/youtube.html",context)
+    return render(request, "Dashboard/books.html",context)
   
 
