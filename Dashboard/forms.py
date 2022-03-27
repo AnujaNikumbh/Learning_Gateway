@@ -31,6 +31,6 @@ class TodoForm(forms.ModelForm):
         
 class ConversationForm(forms.Form):  
     CHOICES = [('length','Length'),('mass','Mass')]
-    measurement =  forms.ChoiceField(choices=CHOICES,widgets=forms.RadioSelect)              
+    measurement =  forms.ChoiceField(choices=CHOICES,widget=forms.RadioSelect)              
             
         
