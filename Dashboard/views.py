@@ -217,3 +217,6 @@ def books(request):
     return render(request, "Dashboard/books.html",context)
   
 
+
+def dictionary(request):
+    return render(request, "Dashboard/dictionary.html",)
