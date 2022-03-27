@@ -6,6 +6,7 @@ from django.contrib import messages #imported messages
 from django.views import generic
 from youtubesearchpython import VideosSearch
 import requests
+import wikipedia
 
 
 # Create your views here.
@@ -254,8 +255,20 @@ def dictionary(request):
 
 
 def wiki(request):
-    form = DashboardForm()
-    context = {
-        'form':form
+    if request.method == "POST":
+        text = request.POST['text']
+        form = DashboardForm(request.POST)
+        search = wikipedia.page(text)
+        context = {
+            'form':form,
+            'title':search.title,
+            'link':search.link,
+            'details':search.summary
+        }
+        return render(request,"Dashboard/wiki.html",context)
+    else:
+        form = DashboardForm()
+        context = {
+            'form':form
         }
     return render(request,"Dashboard/wiki.html",context)
