@@ -254,4 +254,8 @@ def dictionary(request):
 
 
 def wiki(request):
-    return render(request,"Dashboard/wiki.html")
+    form = DashboardForm()
+    context = {
+        'form':form
+        }
+    return render(request,"Dashboard/wiki.html",context)
