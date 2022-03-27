@@ -26,9 +26,18 @@
                                 <h5 class="p-0 m-0">{{result.subtitle}}</h5>
                             </u>
                         </b>
+                        {% if result.description %}
                         <h6 class="p-0 m-1">{{result.description}}</h6>
+                        {% endif %}
+                        {% if result.categories %}
                         <b> 
-                            <h6 class="ml-0 mt-3">Category: name</h6>
+                            <h6 class="ml-0 mt-3">Category:
+                                {% for category in result.categories %}
+                                    {{category}}
+                                {% endfor %}    
+
+                            </h6>
+                            {% endif %}
                             <h6 class="ml-0 mt-1">Pages: 100</h6>
                             <h6 class="ml-0 mt-1">Rating: 4</h6>
                         </b>
