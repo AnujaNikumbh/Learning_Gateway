@@ -40,11 +40,11 @@ class ConversionLengthForm(forms.Form):
         attrs = {'type': 'number','placeholder':'Enter the Number'}
     ))  
     measure1 = forms.CharField(
-      label = '',widget = forms.select(choices=CHOICES)  
+      label = '',widget = forms.Select(choices=CHOICES)  
     ) 
     
     measure2 = forms.CharField(
-      label = '',widget = forms.select(choices=CHOICES)  
+      label = '',widget = forms.Select(choices=CHOICES)  
     )         
 
 class ConversionMassForm(forms.Form):
@@ -53,10 +53,10 @@ class ConversionMassForm(forms.Form):
         attrs = {'type': 'number','placeholder':'Enter the Number'}
     ))  
     measure1 = forms.CharField(
-      label = '',widget = forms.select(choices=CHOICES)  
+      label = '',widget = forms.Select(choices=CHOICES)  
     ) 
     
     measure2 = forms.CharField(
-      label = '',widget = forms.select(choices=CHOICES)  
+      label = '',widget = forms.Select(choices=CHOICES)  
     )                  
         
