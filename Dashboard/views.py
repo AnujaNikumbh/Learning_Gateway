@@ -314,10 +314,10 @@ def conversion(request):
                 input = request.POST['input']
                 answer = ''
                 if input and int(input)>=0:
-                    if first =='yard' and second =='foot':
-                        answer =f'{input}yard = {int(input)*3} foot'
+                    if first =='pound' and second =='kilogram':
+                        answer =f'{input}pound = {int(input)*0.453592} kilogram'
                     if first =='foot' and second =='yard':
-                        answer =f'{input}foot = {int(input)/3} yard'  
+                        answer =f'{input}kilogram = {int(input)*2.20462} pound'  
                 context ={
                     'form':form,
                     'm_form':measurement_form,
@@ -325,8 +325,6 @@ def conversion(request):
                     'answer':answer
                 }          
       
-               
-    
     else:    
         form = ConversationForm()
         context = {
