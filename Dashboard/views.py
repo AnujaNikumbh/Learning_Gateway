@@ -275,9 +275,32 @@ def wiki(request):
 
 
 def conversion(request):
-    form = ConversationForm()
-    context = {
-        'form':form,
-        'input':False
+    if request.method == "POST":
+        form = ConversationForm(request.POST)
+        if request.POST['measurement']=='length':
+            measurement_form = ConversionLengthForm()
+            context = {
+                'form': form,
+                'm_form':measurement_form,
+                'input':True
+            }
+            if 'input' in request.POST:
+                first = request.POST['measure1']
+                second = request.POST['measure2']
+                input = request.POST['input']
+                answer = ''
+                if input and int(input)>=0:
+                    if first =='yard' and second =='foot':
+                        answer =f'{input}yard = {int(input)*3} foot'
+                    if first =='foot' and second =='yard':
+                        answer =f'{input}foot = {int(input)/3} yard'    
+        else: 
+               
+    
+    else:    
+        form = ConversationForm()
+        context = {
+          'form':form,
+          'input':False
     }
     return render(request,"Dashboard/conversion.html",context)
