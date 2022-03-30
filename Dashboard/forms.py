@@ -1,6 +1,7 @@
 from statistics import mode
 from django import forms
 from . models import *
+from django.contrib.auth.forms import UserCreationForm
 
 
 class NotesForm(forms.ModelForm):
@@ -59,4 +60,6 @@ class ConversionMassForm(forms.Form):
     measure2 = forms.CharField(
       label = '',widget = forms.Select(choices=CHOICES)  
     )                  
+        
+
         
