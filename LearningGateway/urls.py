@@ -24,5 +24,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('Dashboard.urls')),                                  #added app url path
     path('register/',dash_views.register,name='register'),                      #register url
-    path('login/',auth_views.LoginView.as_view(template_name ="Dashboard/login.html"),name='login')   
+    path('login/',auth_views.LoginView.as_view(template_name ="Dashboard/login.html"),name='login'),  
+    path('profile/',dash_views.profile,name='profile')   
 ]
